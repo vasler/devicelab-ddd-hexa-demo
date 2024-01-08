@@ -4,7 +4,7 @@ The application is a demo/POC application of an application that serves a team o
 to manage (reserve/return) mobile phones for testing.\
 The Mobile Phones are reserved by the Administrator and also returned to the warehouse by the Administrator.
 
-When the app opens it will show a login screen, use admin/password for credentials, after logging in a screen\
+When the app opens it will show a login screen, use admin/password for credentials, after logging in, a screen\
 with a list of registered testers will be shown. A tester can be selected after which a new screen is shown.\
 The new screen shows mobile phones which the tester has reserved and also a list of phones available for reservation.\
 On this page the phones can be reserved and returned.
