@@ -31,6 +31,7 @@ There is still lots left to be desired:
 
 ## Installation / running
 ### Prerequisites
+- JDK 21
 - Docker
 
 ### Steps
