@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    url: jdbc:postgres://localhost:5432/devicelab
+#    username: devicelab
+#    password: password
+#    hikari:
+#      pool-name: SpringBootHikariPool
+#      minimum-idle: 2
+#      maximum-pool-size: 50
+#      idle-timeout: 30000
+#      connection-timeout: 30000
+#      keepalive-time: 300000
+#      max-lifetime: 1800000
+#
+#  docker:
+#    compose:
+#      enabled: true
+#      lifecycle-management: start_and_stop
+
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
+##        dialect: org.hibernate.dialect.MySQLDialect
+#        hbm2ddl:
+#          auto: none
+#        show_sql: true
+#        format_sql: true
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        hbm2ddl:
+          auto: none
+        show_sql: true
+        format_sql: true
+
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+
+logging:
+  level:
+    org.jmolecules: DEBUG
+    org.hibernate.sql: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE
+    com.zaxxer.hikari: DEBUG

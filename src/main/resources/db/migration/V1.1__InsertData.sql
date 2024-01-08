@@ -1,0 +1,31 @@
+INSERT INTO phone_type (phone_type_id, name, version) values ('Samsung_Galaxy_S9', 'Samsung Galaxy S9', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Samsung_Galaxy_S8', 'Samsung Galaxy S8', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Motorola_Nexus_6', 'Motorola Nexus 6', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Oneplus_9', 'Oneplus 9', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Apple_iPhone_13', 'Apple iPhone 13', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Apple_iPhone_12', 'Apple iPhone 12', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Apple_iPhone_11', 'Apple iPhone 11', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Apple_iPhone_x', 'iPhone X', 1);
+INSERT INTO phone_type (phone_type_id, name, version) values ('Nokia_3310', 'Nokia 3310', 1);
+
+INSERT INTO tester (tester_id, version) VALUES ('user.1', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.2', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.3', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.4', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.5', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.6', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.7', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.8', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.9', 1);
+INSERT INTO tester (tester_id, version) VALUES ('user.10', 1);
+
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899600', 'Samsung_Galaxy_S9', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899601', 'Samsung_Galaxy_S8', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899602', 'Samsung_Galaxy_S8', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899603', 'Motorola_Nexus_6', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899604', 'Oneplus_9', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899605', 'Apple_iPhone_13', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899606', 'Apple_iPhone_12', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899607', 'Apple_iPhone_11', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899608', 'Apple_iPhone_x', true, 1);
+INSERT INTO phone (phone_id, phone_type_id, available, version) values ('35f29256-6717-4898-a734-26d055899609', 'Nokia_3310', true, 1);

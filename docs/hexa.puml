@@ -1,0 +1,21 @@
+@startuml
+
+class "Primary Adapter" as PrimaryAdapter
+class "Secondary Adapter" as SecondaryAdapter
+interface "Primary Port" as PrimaryPort
+interface "Secondary Port" as SecondaryPort
+class "Application Service" as ApplicationService
+class "Domain Service" as DomainService
+class "Aggregate" as Aggregate
+
+PrimaryAdapter .down.> PrimaryPort
+ApplicationService .up.|> PrimaryPort
+ApplicationService .right..> Aggregate
+ApplicationService .right.> DomainService
+DomainService .right.> Aggregate
+
+ApplicationService .down.> SecondaryPort
+SecondaryPort <|.down. SecondaryAdapter
+@enduml
+
+
