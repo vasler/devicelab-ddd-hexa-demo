@@ -35,9 +35,18 @@ There is still lots left to be desired:
 
 ### Steps
 - checkout the repository
-- run the Maven wrapper from the shell using the 'spring-boot:start' task (example on Windows: '.\mvnw spring-boot:start')\
+- open the shell/cmd in the root of the project
+- compile the app using the Maven wrapper
+  - Windows: .\mvnw compile
+  - Linux: ./mvnw compile
+- run the app using the Maven wrapper
+  - Windows: .\mvnw spring-boot:start
+  - Linux: ./mvnw spring-boot:start
 - open the URL 'http://localhost:8080' in the browser
-- stop the application using Maven 'spring-boot:stop' task
+- stop the application using the Maven wrapper
+  - Windows: .\mvnw spring-boot:stop
+  - Linux: ./mvnw spring-boot:stop
+#### Note: PostgreSQL is started on standard port 5432 using Docker Compose
 
 ## Domain-Driven Design and Ports & Adapters architecture with Java, Spring Boot and jMolecules - overview
 
