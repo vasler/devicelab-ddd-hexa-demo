@@ -13,7 +13,9 @@ There is still lots left to be desired:
 - security (CSRF for example, in-memory user credentials, ...)
 - logging and observability
 - error handling needs to be improved
-- some rules of DDD were not followed to the letter and some improvements can be made
+- some rules of DDD were not followed to the letter and some improvements can be made, for example some data maping was
+done in Domain Services having getters exposed on Aggregates instead of using something like a Strategy Pattern, also
+Aggregates were tied to a specific storage implementation - JPA
 - jMolecules 'DDD and Ports & Adapters Architecture' Archunit tests need to be added
 - and last but not least, the UI will make your eyes bleed, be warned
 
@@ -22,6 +24,7 @@ There is still lots left to be desired:
 - Spring Boot 3.2
 - Spring Data JPA
 - jMoleclues
+- Lombok
 - Flyway
 - PostgreSQL
 - HTMX
