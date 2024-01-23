@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation;
+package vasler.devicelabtest.ports.primary.phonereservation;
 
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
@@ -7,18 +7,20 @@ import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
-import vasler.devicelab._config_.PostgresTestConfiguration;
+import vasler.devicelabtest._config_.PostgresTestConfiguration;
 import vasler.devicelab.domain.model.phone.Phone;
+import vasler.devicelab.ports.primary.phonereservation.PhoneReservationUseCase;
 import vasler.devicelab.ports.primary.phonereservation.dto.*;
 import vasler.devicelab.ports.secondary.repository.PhoneTypes;
 import vasler.devicelab.ports.secondary.repository.Phones;
+import vasler.devicelabtest._config_.TestConfig;
 
 import java.util.List;
 import java.util.UUID;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = TestConfig.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@Import(PostgresTestConfiguration.class)
+@Import({PostgresTestConfiguration.class})
 class PhoneReservationAndReturnUseCaseTest {
 	private static final Logger log = org.slf4j.LoggerFactory.getLogger(PhoneReservationAndReturnUseCaseTest.class);
 

@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation;
+package vasler.devicelabtest.ports.primary.phonereservation;
 
 import org.jmolecules.ddd.types.Association;
 import vasler.devicelab.domain.model.phone.Phone;

@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation;
+package vasler.devicelabtest.ports.primary.phonereservation;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.MethodOrderer;
@@ -6,10 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
-import vasler.devicelab._config_.PostgresTestConfiguration;
+import vasler.devicelabtest._config_.PostgresTestConfiguration;
+import vasler.devicelab.ports.primary.phonereservation.PhoneReservationUseCaseException;
 import vasler.devicelab.ports.primary.phonereservation.dto.PhoneReservationRequest;
+import vasler.devicelabtest._config_.TestConfig;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = TestConfig.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @Import(PostgresTestConfiguration.class)
 public class PhoneReservationRequestTest {
