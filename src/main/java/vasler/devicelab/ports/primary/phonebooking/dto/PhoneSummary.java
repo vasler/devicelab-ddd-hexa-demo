@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation.dto;
+package vasler.devicelab.ports.primary.phonebooking.dto;
 
 import lombok.Builder;
 import lombok.ToString;
@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString
-public class ReservedPhone {
+public class PhoneSummary {
     private final UUID phoneId;
     private final String phoneType;
-    private final String reservedBy;
-    private final LocalDateTime reservedOn;
+    private final String bookedBy;
+    private final LocalDateTime bookedOn;
 }

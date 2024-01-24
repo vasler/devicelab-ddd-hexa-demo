@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation.dto;
+package vasler.devicelab.ports.primary.phonebooking.dto;
 
 import lombok.Builder;
 import lombok.Getter;

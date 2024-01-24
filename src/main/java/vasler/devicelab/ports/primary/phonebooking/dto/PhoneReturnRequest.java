@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation.dto;
+package vasler.devicelab.ports.primary.phonebooking.dto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import vasler.devicelab._util_.BeanValidator;
-import vasler.devicelab.ports.primary.phonereservation.PhoneReservationUseCaseException;
+import vasler.devicelab.ports.primary.phonebooking.PhoneBookingUseCaseException;
 
 @Value
 @Builder(toBuilder = true)
@@ -25,7 +25,7 @@ public class PhoneReturnRequest {
         public PhoneReturnRequest build() {
             PhoneReturnRequest phoneReturnRequest = super.build();
             var errors = BeanValidator.validate(phoneReturnRequest);
-            if (!errors.isEmpty()) throw new PhoneReservationUseCaseException();
+            if (!errors.isEmpty()) throw new PhoneBookingUseCaseException();
 
             return phoneReturnRequest;
         }

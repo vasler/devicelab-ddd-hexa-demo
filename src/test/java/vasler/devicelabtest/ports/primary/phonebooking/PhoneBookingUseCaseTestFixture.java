@@ -1,9 +1,9 @@
-package vasler.devicelabtest.ports.primary.phonereservation;
+package vasler.devicelabtest.ports.primary.phonebooking;
 
 import org.jmolecules.ddd.types.Association;
 import vasler.devicelab.domain.model.phone.Phone;
-import vasler.devicelab.ports.primary.phonereservation.dto.PhoneReservationRequest;
-import vasler.devicelab.ports.primary.phonereservation.dto.PhoneReturnRequest;
+import vasler.devicelab.ports.primary.phonebooking.dto.PhoneBookingRequest;
+import vasler.devicelab.ports.primary.phonebooking.dto.PhoneReturnRequest;
 import vasler.devicelab.ports.secondary.repository.PhoneTypes;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class PhoneRegistrationUseCaseTestFixture {
-    public static PhoneReservationRequest buildValidPhoneRegistrationRequest() {
-        return PhoneReservationRequest.builder().phoneType("Motorola_Nexus_6").tester("user.4").build();
+public class PhoneBookingUseCaseTestFixture {
+    public static PhoneBookingRequest buildValidPhoneRegistrationRequest() {
+        return PhoneBookingRequest.builder().phoneType("Motorola_Nexus_6").tester("user.4").build();
     }
 
     public static PhoneReturnRequest buildPhoneReturnRequestWithUnknownTester() {
@@ -33,12 +33,12 @@ public class PhoneRegistrationUseCaseTestFixture {
         return PhoneReturnRequest.builder().phoneId("35f29256-6717-4898-a734-26d055899603").tester("user.4").build();
     }
 
-    public static PhoneReservationRequest buildPhoneRegistrationRequestForUnregisteredTester() {
-        return PhoneReservationRequest.builder().phoneType("Motorola_Nexus_6").tester("user.unregistered").build();
+    public static PhoneBookingRequest buildPhoneRegistrationRequestForUnregisteredTester() {
+        return PhoneBookingRequest.builder().phoneType("Motorola_Nexus_6").tester("user.unregistered").build();
     }
 
-    public static PhoneReservationRequest buildPhoneRegistrationRequestForUnknownPhoneType() {
-        return PhoneReservationRequest.builder().phoneType("Unknown_Phone_Type").tester("user.4").build();
+    public static PhoneBookingRequest buildPhoneRegistrationRequestForUnknownPhoneType() {
+        return PhoneBookingRequest.builder().phoneType("Unknown_Phone_Type").tester("user.4").build();
     }
 
     public static List<Phone> buildAllPhones(PhoneTypes phoneTypes, Set<String> excludeList) {

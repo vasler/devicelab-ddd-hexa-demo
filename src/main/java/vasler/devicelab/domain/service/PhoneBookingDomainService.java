@@ -8,8 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 import vasler.devicelab.domain.model.phone.Phone;
 import vasler.devicelab.domain.model.phonetype.PhoneType;
 import vasler.devicelab.domain.model.tester.Tester;
-import vasler.devicelab.ports.primary.phonereservation.dto.AvailablePhoneType;
-import vasler.devicelab.ports.primary.phonereservation.dto.ReservedPhone;
+import vasler.devicelab.ports.primary.phonebooking.dto.PhoneTypeSummary;
+import vasler.devicelab.ports.primary.phonebooking.dto.PhoneSummary;
 import vasler.devicelab.ports.secondary.repository.PhoneTypes;
 import vasler.devicelab.ports.secondary.repository.Phones;
 import vasler.devicelab.ports.secondary.repository.Testers;
@@ -21,36 +21,37 @@ import java.util.stream.Collectors;
 @Service
 @Transactional
 @AllArgsConstructor
-public class PhoneReservationDomainService implements PhoneReservationDomainUseCase {
+public class PhoneBookingDomainService implements PhoneBookingDomainUseCase {
     private final Phones phones;
     private final PhoneTypes phoneTypes;
     private final Testers testers;
 
-    // TOOD -- TAKEN A SHORTCUTS HERE
-    // REFACTOR -- MOVE THE LOGIC TO THE AGREGGATES, USE STRATEGY PATTERN OR SIMILAR, REMOVE GETTERS
+    // TODO -- TAKEN A SHORTCUTS HERE
+    // REFACTOR --  MOVE THE LOGIC INTO AGREGGATES (USE STRATEGY PATTERN OR SIMILAR / REMOVE GETTERS)
+    //              OR USE ARCHUNIT AND ALLOW THE GETTERS TO BE CALLED ONLY FROM DOMAIN SERVICES
 
     @Override
-    public List<ReservedPhone> fetchPhonesReservedByTester(String tester) throws Exception {
-        List<Phone> reservedPhones = phones.findByReservedBy(Association.forId(new Tester.TesterId(tester)));
+    public List<PhoneSummary> fetchPhonesBookedByTester(String tester) throws Exception {
+        List<Phone> bookedPhones = phones.findByBookedBy(Association.forId(new Tester.TesterId(tester)));
 
-        return reservedPhones.stream()
+        return bookedPhones.stream()
             .map(p -> {
                 PhoneType phoneType = phoneTypes.resolveRequired(p.getPhoneType());
 
-                return ReservedPhone.builder()
+                return PhoneSummary.builder()
                     .phoneType(phoneType.getName())
                     .phoneId(p.getId().id())
-                    .reservedOn(p.getReservedOn())
-                    .reservedBy(testers.resolveRequired(p.getReservedBy()).getId().id())
+                    .bookedOn(p.getBookedOn())
+                    .bookedBy(testers.resolveRequired(p.getBookedBy()).getId().id())
                     .build();
             })
             .collect(Collectors.toList());
     }
 
     @Override
-    public List<AvailablePhoneType> findAvailablePhoneTypes() throws Exception {
+    public List<PhoneTypeSummary> findAvailablePhoneTypes() throws Exception {
         return phoneTypes.findAvailablePhoneTypes().stream()
-            .map(pt -> AvailablePhoneType.builder().
+            .map(pt -> PhoneTypeSummary.builder().
                 phoneTypeId(pt.getId().id())
                 .phoneTypeName(pt.getName())
                 .build()

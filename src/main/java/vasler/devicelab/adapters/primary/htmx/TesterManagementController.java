@@ -13,7 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping( "/ui/testers")
 @AllArgsConstructor
-public class TestersController {
+public class TesterManagementController {
     private final TesterManagementUseCase testerManagementUseCase;
 
     @GetMapping("")
@@ -43,7 +43,7 @@ public class TestersController {
                         <th class="bg-green-700 mx-6 px-6 py-3 text-center"></th>
                     </tr>
                 </thead>
-                <tbody id="reserved-phones" class="text-white divide-y divide-gray-600">"""
+                <tbody id="booked-phones" class="text-white divide-y divide-gray-600">"""
             );
 
         if (!testerDetailsList.isEmpty()) {
@@ -51,7 +51,7 @@ public class TestersController {
                 stringBuilder.append("""
                 <tr>
                     <td class="bg-green-700 mx-6 px-6 py-3 text-center">%s</td>
-                    <td class="bg-green-700 mx-6 px-6 py-3 text-center"><a href="/ui/tester/%s" class="font-extrabold">Select</a></td>
+                    <td class="bg-green-700 mx-6 px-6 py-3 text-center"><a href="/ui/tester/%s/phones" class="font-extrabold">Select</a></td>
                 </tr>""".formatted(testerDetails.getTesterId(), testerDetails.getTesterId())
                 );
             });

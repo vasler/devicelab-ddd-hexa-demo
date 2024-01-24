@@ -1,4 +1,4 @@
-package vasler.devicelab.ports.primary.phonereservation.dto;
+package vasler.devicelab.ports.primary.phonebooking.dto;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import java.util.UUID;
 @Value
 @Getter
 @Builder
-public class PhoneReservationResult {
+public class PhoneBookingResult {
     public static enum Message {
         PHONE_TYPE_UNKNOWN,
         TESTER_NOT_REGISTERED,

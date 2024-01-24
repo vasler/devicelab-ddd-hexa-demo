@@ -6,7 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.jmolecules.ddd.types.AggregateRoot;
 import org.jmolecules.ddd.types.Association;
 import org.jmolecules.ddd.types.Identifier;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceCreator;
 import vasler.devicelab.domain.model.phonetype.PhoneType;
 import vasler.devicelab.domain.model.phonetype.PhoneTypeAssociationConverter;
@@ -39,11 +38,11 @@ public class Phone implements AggregateRoot<Phone, Phone.PhoneId> {
     @Getter
     private boolean available;
     @Getter
-    private LocalDateTime reservedOn;
+    private LocalDateTime bookedOn;
 
     @Getter
     @Convert(converter = TesterAssociationConverter.class)
-    Association<Tester, Tester.TesterId> reservedBy;
+    Association<Tester, Tester.TesterId> bookedBy;
 
     @Version
     private Integer version;
@@ -61,22 +60,22 @@ public class Phone implements AggregateRoot<Phone, Phone.PhoneId> {
     }
 
     // DOMAIN METHODS
-    public boolean reservePhone(Tester tester) {
+    public boolean bookPhone(Tester tester) {
         if (!available) return false;
 
         available = false;
-        reservedOn = LocalDateTime.now();
-        reservedBy = Association.forAggregate(tester);
+        bookedOn = LocalDateTime.now();
+        bookedBy = Association.forAggregate(tester);
 
         return true;
     }
 
     public boolean returnPhone(Tester tester) {
-        if (available || !reservedBy.pointsTo(tester)) return false;
+        if (available || !bookedBy.pointsTo(tester)) return false;
 
         available = true;
-        reservedOn = null;
-        reservedBy = null;
+        bookedOn = null;
+        bookedBy = null;
 
         return true;
     }
