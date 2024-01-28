@@ -22,7 +22,7 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode(of = "id")
 @NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE, onConstructor = @__(@PersistenceCreator))
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Phone implements AggregateRoot<Phone, Phone.PhoneId> {
     public record PhoneId(@Column(name = "phone_id") UUID id) implements Identifier, Serializable { }
 
