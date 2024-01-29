@@ -1,0 +1,71 @@
+@startuml
+skinparam componentstyle uml2
+skinparam defaultTextAlignment center
+skinparam noteTextAlignment left
+left to right direction
+
+component "Primary / Driving (infrastructure) Layer" {
+    class "Primary Adapter" as PrimaryAdapter
+    note top of PrimaryAdapter
+        Primary adapters are the driving side of the application.
+        In a Spring Boot application they might implemented as
+        Controllers, message consumers, schedulers, etc.
+
+        Primary adapters invoke methods on Primary Ports which
+        represent use cases.
+        In a Spring Boot application Primary Ports are usually
+        implemented as a Spring Service residing in the Application
+        Layer and are autowired into Primary Adapters.
+    end note
+}
+interface "Primary Port" as PrimaryPort
+
+interface "Secondary Port" as SecondaryPort
+component "Secondary / Driven (infrastructure) Layer" {
+    class "Secondary Adapter" as SecondaryAdapter
+
+    note top of SecondaryAdapter
+        Secondary adapters are the driven side of the application.
+        In a Spring Boot application they might represent HTTP
+        (Rest) Clients, implementations of Spring Repositories,
+        message producers, etc.
+    end note
+
+}
+
+component "Application Layer" {
+    class "Application Service" as ApplicationService
+
+    component "Domain Layer" {
+        class "Domain Service" as DomainService
+        class "Aggregate" as Aggregate
+    }
+
+    note top of ApplicationService
+        Application Service implements use cases defined
+        on the Primary Port.
+        In Spring Boot Application Service is usually
+        implemented as a Spring Service and it reacts
+        to inputs from Primary Adapters, invokes the
+        Domain Layer and uses Secondary Ports to invoke
+        Secondary Adapters which are autowired.
+
+        Application Service shouldn't hold any domain logic,
+        it should only control transactions and security,
+        it should load Aggregates and invoke domain methods
+        on the Aggregates on invoke Domain Services if
+        domain logic spans more than one aggregate.
+    end note
+}
+
+PrimaryAdapter .down.> PrimaryPort
+ApplicationService .up.|> PrimaryPort
+
+ApplicationService .right..> Aggregate
+ApplicationService .right.> DomainService
+DomainService .right.> Aggregate
+
+ApplicationService .down.> SecondaryPort
+SecondaryPort <|.down. SecondaryAdapter
+
+@enduml

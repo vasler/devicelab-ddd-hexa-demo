@@ -54,10 +54,10 @@ Aggregates were tied to a specific storage implementation - JPA
 
 ## Domain-Driven Design and Ports & Adapters architecture with Java, Spring Boot and jMolecules - overview
 
-![](docs/hexa.png "Ports and Adapters architecture")
+![](docs/PortsAndAdapters.png "Ports and Adapters architecture")
 
 ### Primary Adapter
-Primary adapters receive requests from external (often Controllers / RestControllers) and use Primary Ports.
+Primary adapters receive requests from external services (Spring Controllers, Kafka consumers, etc...) and use Primary Ports.
 - Spring Controllers
     - found in packages: vasler.devicelab.adapters.primary.*
 
